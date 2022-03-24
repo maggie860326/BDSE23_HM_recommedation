@@ -1,0 +1,4 @@
+install scikit-surprise
+
+切換到管理員
+conda install -c conda-forge mysql-connector-python
