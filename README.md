@@ -1,4 +1,4 @@
-# BDSE23_HM_recommedation
+# BDSE23_HM_recommendation
 
 # 專案介紹
 
