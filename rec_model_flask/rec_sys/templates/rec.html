@@ -1,0 +1,20 @@
+<body>
+     <form method="post" action="/">
+         <input type="text" name="user">
+         <button type="submit">Submit</button>
+     </form>
+ 
+     <p> your are user : {{user}} </p>
+     
+     <p> Your recommend list are: </p>
+      
+     {% for i in rec_list %}
+		  {{ i }} <br>
+	 {% endfor %}
+
+
+	 {% for item in iid_list %}
+		  {{ item }} <br>
+	 {% endfor %}
+     
+</body>
