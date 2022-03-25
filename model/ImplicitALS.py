@@ -8,6 +8,7 @@ class ImplicitALS():
     def __init__(self):
         self=self
 
+
     def data_preprocess(self,transactions,customers,articles):
         """傳入transaction,customers,articles 的 DataFrame，接著取出完整的users和items清單，然後將customer_id和article_id轉為編號，並且map到transaction上形成新的欄位。
 
