@@ -1,14 +1,12 @@
 import numpy as np
 import pandas as pd
 from pickle import load
-from scipy.sparse import coo_matrix
+from scipy.sparse import coo_matrix, load_npz
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import LabelEncoder
 
 # Load Data
-customers = pd.read_csv('../data/customers.csv')
 articles = pd.read_csv('../data/articles.csv')
-transactions = pd.read_csv('../data/transactions_train.csv')
 
 # KNN recommd function
 def recom_knn(art_ID):
@@ -16,25 +14,13 @@ def recom_knn(art_ID):
     query_artcile = art_ID
     file = "../data/newKnn.pickle"
     K = load(open(file,"rb"))
-    
-    ALL_USERS = customers['customer_id'].unique().tolist()
+    sparse_matrix = load_npz('../data/sparse_matrix.npz')
+
     ALL_ITEMS = articles['article_id'].unique().tolist()
-
-    leUser = LabelEncoder().fit(ALL_USERS)
-    transactions['user_id'] = leUser.transform(transactions['customer_id'])
     leItem = LabelEncoder().fit(ALL_ITEMS)
-    transactions['item_id'] = leItem.transform(transactions['article_id'])
 
-    col = transactions['user_id'].values
-    row = transactions['item_id'].values
-    one = np.ones(transactions.shape[0])
-    coo = coo_matrix((one, (row, col)), shape=(len(ALL_ITEMS), len(ALL_USERS)))
-    csr = coo.tocsr()
-
-    model_knn = NearestNeighbors(metric = 'cosine', algorithm = 'brute')
-    model_knn.fit(csr)
     index = leItem.transform([query_artcile])
-    distances, indices = K.kneighbors(csr[index,:].toarray().reshape(1,-1), n_neighbors = 6)
+    distances, indices = K.kneighbors(sparse_matrix[index,:].toarray().reshape(1,-1), n_neighbors = 6)
     
     article = []
     distance = []
