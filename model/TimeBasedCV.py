@@ -24,7 +24,7 @@ class TimeBasedCV(object):
 
         
         
-    def split(self, data, date_column='record_date',train_period=30, test_period=7, gap=0, stride=0,show_progress=False):
+    def split(self, data, date_column='t_dat',train_period=30, test_period=7, gap=0, stride=0,show_progress=False):
         '''
         Generate indices to split data into training and test set
         
