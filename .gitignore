@@ -42,6 +42,7 @@ Temporary Items
 
 # Local History for Visual Studio Code
 .history/
+rec_model_flask/rec_sys/static
 
 # Built Visual Studio Code Extensions
 *.vsix
