@@ -24,7 +24,7 @@ class TimeBasedCV(object):
 
         
         
-    def split(self, data, date_column='record_date',train_period=30, test_period=7, gap=0, stride=0,show_progress=False):
+    def split(self, data, date_column='t_dat',train_period=30, test_period=7, gap=0, stride=0,show_progress=False):
         '''
         Generate indices to split data into training and test set
         
@@ -61,14 +61,14 @@ class TimeBasedCV(object):
         start_train = end_train - eval('relativedelta('+self.freq+'=train_period)')
         
 
-        while start_train > data[date_column].min():
+        while start_train >= data[date_column].min():
             # train indices:
-            cur_train_indices = list(data[(data[date_column]>=start_train) & 
-                                     (data[date_column]<end_train)].index)
+            cur_train_indices = list(data[(data[date_column]>start_train) & 
+                                     (data[date_column]<=end_train)].index)
 
             # test indices:
-            cur_test_indices = list(data[(data[date_column]>=start_test) &
-                                    (data[date_column]<end_test)].index)
+            cur_test_indices = list(data[(data[date_column]>start_test) &
+                                    (data[date_column]<=end_test)].index)
             
             if(show_progress):
                 print("Train period:",start_train,"-" , end_train, ", test period", start_test, "-", end_test,
