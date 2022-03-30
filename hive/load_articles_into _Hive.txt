@@ -1,0 +1,32 @@
+CREATE TABLE `articles` (
+  `article_id` INT ,
+  `product_code` varchar(255)  ,
+  `prod_name` varchar(255)  ,
+  `product_type_no` varchar(255)  ,
+  `product_type_name` varchar(255)  ,
+  `product_group_name` varchar(255)  ,
+  `graphical_appearance_no` varchar(255)  ,
+  `graphical_appearance_name` varchar(255)  ,
+  `colour_group_code` varchar(255)  ,
+  `colour_group_name` varchar(255)  ,
+  `perceived_colour_value_id` varchar(255)  ,
+  `perceived_colour_value_name` varchar(255)  ,
+  `perceived_colour_master_id` varchar(255)  ,
+  `perceived_colour_master_name` varchar(255)  ,
+  `department_no` varchar(255)  ,
+  `department_name` varchar(255)  ,
+  `index_code` varchar(255)  ,
+  `index_name` varchar(255)  ,
+  `index_group_no` varchar(255)  ,
+  `index_group_name` varchar(255)  ,
+  `section_no` varchar(255)  ,
+  `section_name` varchar(255)  ,
+  `garment_group_no` varchar(255)  ,
+  `garment_group_name` varchar(255)  ,
+  `detail_desc` varchar(255))
+ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+tblproperties("skip.header.line.count"="1");
+
+LOAD DATA INPATH '/user/HM_csv/articles.csv' 
+OVERWRITE INTO TABLE articles;
+
