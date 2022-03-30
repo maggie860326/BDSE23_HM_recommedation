@@ -1,20 +1,32 @@
 <body>
      <form method="post" action="/">
+         <label>使用者輸入</label>
          <input type="text" name="user">
-         <button type="submit">Submit</button>
+         <button type="submit">推薦商品</button>
      </form>
  
-     <p> your are user : {{user}} </p>
+     <p> {{user}} 歡迎回來本站 </p>
      
-     <p> Your recommend list are: </p>
-      
-     {% for i in rec_list %}
-		  {{ i }} <br>
+     <p> 你的歷史購買清單: </p>
+        {% for table in trans_tables %}
+           {{ table[0] }}
+        {% endfor %}
+		
+     <p>你的歷史購買清單 pic:</p>
+	 {% for i in user_image %}
+		 <img src="{{ i }}" alt="User Image" width="300" height="300">
+	 {% endfor %} 
+	 
+     <p> 你的推薦購買清單: </p>
+     {% for i in predict_dict %}
+		  {{ i[0] }} <br>
 	 {% endfor %}
-
-
-	 {% for item in iid_list %}
-		  {{ item }} <br>
+	 	 
+	 <p>你的推薦購買清單 pic: </p>
+	 {% for i in user_img %}
+		 <img src="{{ i }}" alt="User Image" width="300" height="300">
 	 {% endfor %}
+	 
+		 
      
 </body>
