@@ -18,9 +18,10 @@ def result():
 	if request.method =='POST':
 		user = request.values['user']
 		
-		### cust history list 
+	### cust history list 
 		trans_df_filter = trans_df[trans_df['customer_id'].isin([user])]
-		### cust rec list
+		
+	### cust rec list
 		est_list,rec_list,iid_list = rec_model_several(user)
 		predict_dict = rec_model_several_dict(user)
 
