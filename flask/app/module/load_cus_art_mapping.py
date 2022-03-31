@@ -40,6 +40,16 @@ def load_cus_art_mapping():
 	trans_cols = ['t_dat','customer_id','article_id','price','sales_channel_id','price_int']
 				
 	trans_df = pd.DataFrame (myresult3, columns = trans_cols)
+	
+	### bi data
+	mycursor.execute("SELECT * FROM bi_data limit 1000")
 
-	return article_df,customer_df,trans_df
+	myresult4 = mycursor.fetchall()
+
+	bi_cols = ['t_dat','customer_id','article_id','price','sales_channel_id','t_year','t_month','t_day',
+	'order_id']
+				
+	bi_df = pd.DataFrame (myresult4, columns = bi_cols)
+
+	return article_df,customer_df,trans_df,bi_df
 	
