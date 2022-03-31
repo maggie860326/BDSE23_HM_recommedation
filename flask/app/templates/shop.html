@@ -19,7 +19,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">HM</a>
+            <a class="navbar-brand" href="/">HM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -66,12 +66,12 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{ i.get('name') }}</h5>
                                 <!-- Product price-->
-                                $40.00 - $80.00
+                                <!-- $40.00 - $80.00 -->
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/show?{{i.get('id')}}">購買商品</a>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/shop?id={{i.get('id')}}">購買商品</a>
                             </div>
                         </div>
                     </div>

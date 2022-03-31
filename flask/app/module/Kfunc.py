@@ -29,7 +29,7 @@ def recom_knn(art_ID):
 
     for i in range(0, len(distances.flatten())):
         if i != 0:
-            article.append(leItem.inverse_transform([indices.flatten()[i]]))
+            article.append(leItem.inverse_transform([indices.flatten()[i]])[0])
             distance.append(distances.flatten()[i]) 
            
 
