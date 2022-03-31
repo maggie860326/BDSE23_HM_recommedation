@@ -93,13 +93,16 @@ def shop():
     # print("#####################",type(klist),"#######################")
     print("#####################",url_id,"#######################")
     # return render_template('shop.html')
-    return redirect(url_for("show_img",list= klist))
+    return redirect(url_for("show_img", list= klist, origin_img = art_id))
 
 @app.route('/show') ### 轉此顯示圖片或可以直接轉網頁用
 def show_img():
-    
+
     nlist=[]
     arg = request.args.getlist("list") # 從URL REQUEST 取出 ARGS 轉 LIST
+    orig = request.args.get("origin_img") # 取得來源商品ID
+    orig_path = os.path.join("static/imgs/", "0"+orig[0:2]+"/", "0"+ orig +".jpg")
+    print("path : =====>",orig_path)
 
     for i in arg: 
         print("arg => "+i[1:-1])## 取出ID
@@ -108,7 +111,7 @@ def show_img():
         dic= {"name":getdb[0][0],"img":img,"id":i[1:-1]} # 將 圖片、名稱、ID 加入 DICT
         nlist.append(dic) # 製作成LIST
     print("#############",nlist,"#################")
-    return render_template('shop.html', list = nlist)
+    return render_template('shop.html', list = nlist, o_path = orig_path)
 
 @app.route('/report')
 def report():
