@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,8 +42,8 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="report.html">Report</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/report">Report</a></li>
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
@@ -87,10 +86,10 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     year
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul class="dropdown-menu" name ="year">
+                                    <li><a class="dropdown-item" href="/report?year=2018">2018</a></li>
+                                    <li><a class="dropdown-item" href="/report?year=2019">2019</a></li>
+                                    <li><a class="dropdown-item" href="/report?year=2020">2020</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -101,9 +100,9 @@
                                     month
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="/report?month=1">jan</a></li>
+                                    <li><a class="dropdown-item" href="/report?month=2">feb</a></li>
+                                    <li><a class="dropdown-item" href="/report?month=3">march</a></li>
                                 </ul>
 
 
@@ -132,7 +131,31 @@
 
                         </div>
                     </div>
-
+	<!--test filter table -->
+	<table class="table table-sm">
+		<thead>
+			{% for i in bi_df_col %}
+					<th scope="col">{{ i }}</th>
+			 {% endfor %} 
+		</thead>
+		<tbody>
+			{% for index,row in bi_df.iterrows() %}
+				<tr>		
+					<th scope="row">{{row['t_dat']}}</th>
+					<td>{{row['customer_id']}}</td>
+					<td>{{row['article_id']}}</td>
+					<td>{{row['price']}}</td>
+					<td>{{row['sales_channel_id']}}</td>
+					<td>{{row['t_year']}}</td>
+					<td>{{row['t_month']}}</td>
+					<td>{{row['t_day']}}</td>
+					<td>{{row['order_id']}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>							
+	</table>
+	
+	
                     <!--table-->
                     <div class="table-div">
                         <div class="table-left" style="width: 90%;float: left;">
@@ -248,7 +271,7 @@
                                     Article_id
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item active" href="#">3696</a></li>
+                                    <li><a class="dropdown-item active" href="/report?article_id=663713001">663713001</a></li>
                                     <li><a class="dropdown-item" href="#">3699</a></li>
                                     <li><a class="dropdown-item" href="#">3700</a></li>
                                     <li>
