@@ -1,7 +1,8 @@
-from flask import Flask,render_template,request,url_for
+from flask import Flask,render_template,request,url_for,redirect
 import sys
 import os 
 from module.Kfunc import recom_knn
+from module.db import DatabaseConnection
 
 ### relative path
 module_path = os.path.join('module')
@@ -12,6 +13,7 @@ import load_cus_art_mapping
 
 article_df,customer_df,trans_df,bi_df = load_cus_art_mapping.load_cus_art_mapping()
 app = Flask(__name__)
+db = DatabaseConnection("172.22.33.44", "root", "root", "HM")
 
 @app.route('/')
 def main():
@@ -80,19 +82,33 @@ def result():
                              
 @app.route('/shop')
 def shop():
+
     url_id = request.args.to_dict().popitem()
     url_id = url_id[0].split("\\")
     art_id = url_id[3][1:-4] # 從URL取得商品ID
 
     klist = recom_knn(int(art_id))
+    for i in klist: print(i)
 
+    # print("#####################",type(klist),"#######################")
+    print("#####################",url_id,"#######################")
+    # return render_template('shop.html')
+    return redirect(url_for("show_img",list= klist))
 
+@app.route('/show') ### 轉此顯示圖片或可以直接轉網頁用
+def show_img():
+    
+    nlist=[]
+    arg = request.args.getlist("list") # 從URL REQUEST 取出 ARGS 轉 LIST
 
-
-    print("#####################",type(art_id),"#######################")
-    print("#####################",art_id,"#######################")
-    return render_template('shop.html')
-
+    for i in arg: 
+        print("arg => "+i[1:-1])## 取出ID
+        getdb =  db.read_article_name(i[1:-1]) # 從資料庫取得商品名稱
+        img = os.path.join("static/imgs/", "0"+i[1:3]+"/", "0"+i[1:-1]+".jpg") # 取出圖片路徑
+        dic= {"name":getdb[0][0],"img":img,"id":i[1:-1]} # 將 圖片、名稱、ID 加入 DICT
+        nlist.append(dic) # 製作成LIST
+    print("#############",nlist,"#################")
+    return render_template('shop.html', list = nlist)
 
 @app.route('/report')
 def report():
@@ -109,3 +125,4 @@ def report():
     
 if __name__ == '__main__':
      app.run(host='127.0.0.1', port=8000)
+     app.run(debug=True)
