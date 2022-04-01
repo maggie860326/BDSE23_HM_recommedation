@@ -49,7 +49,7 @@ class surpriseSVD():
         return rating_set
 
 
-    def train_SVD(self, train_data, test_data, train_period, val_period, stride, start_val):
+    def train_SVD(self, train_data, test_data, train_period, test_period, stride, start_val):
 
         ## 讀取評分資料為surprise可以訓練的格式
         trainset = self.get_rating_set(train_data)
@@ -123,7 +123,7 @@ class surpriseSVD():
 
                     newRow = {
                             'train_period':train_period, 
-                            'val_period':val_period, 
+                            'val_period':test_period, 
                             'stride':stride, 
                             'start_val':start_val,
                             # =====填寫參數名稱===============
