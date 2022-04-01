@@ -10,6 +10,7 @@ def load_cus_art_mapping():
 
 	mycursor = mydb.cursor()
 
+    ### article data
 	mycursor.execute("SELECT * FROM articles")
 
 	myresult = mycursor.fetchall()
@@ -21,8 +22,8 @@ def load_cus_art_mapping():
 	import pandas as pd			
 	article_df = pd.DataFrame (myresult, columns = articles_cols)
 	
-	#
-	mycursor.execute("SELECT * FROM customers limit 10")
+	### customer data
+	mycursor.execute("SELECT * FROM customers limit 1000")
 
 	myresult2 = mycursor.fetchall()
 
@@ -31,6 +32,14 @@ def load_cus_art_mapping():
 				
 	customer_df = pd.DataFrame (myresult2, columns = customers_cols)
 	
+	### transactions data
+	mycursor.execute("SELECT * FROM transactions_train limit 1000")
 
-	return article_df,customer_df
+	myresult3 = mycursor.fetchall()
+
+	trans_cols = ['t_dat','customer_id','article_id','price','sales_channel_id','price_int']
+				
+	trans_df = pd.DataFrame (myresult3, columns = trans_cols)
+
+	return article_df,customer_df,trans_df
 	

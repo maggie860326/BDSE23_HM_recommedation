@@ -1,0 +1,19 @@
+CREATE TABLE `customers` (
+  `customer_id` varchar(255)  ,
+  `FN` varchar(255)  ,
+  `Active` varchar(255)  ,
+  `club_member_status` varchar(255)  ,
+  `fashion_news_frequency` varchar(255)  ,
+  `age` varchar(255)  ,
+  `postal_code` varchar(255)  
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+tblproperties("skip.header.line.count"="1");
+
+LOAD DATA INPATH '/user/HM_csv/customers.csv' 
+OVERWRITE INTO TABLE customers;
+
+select * from customers limit 5;
+
+select count(*) from customers;
+
+
