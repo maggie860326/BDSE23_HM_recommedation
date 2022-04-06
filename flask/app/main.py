@@ -5,7 +5,10 @@ from module.Kfunc import recom_knn
 from module.db import DatabaseConnection
 from module.grid_view import *
 from module.main_page import mainPage
-
+import pandas as pd
+import json
+import plotly
+import plotly.express as px
 
 ### relative path
 module_path = os.path.join('module')
@@ -16,6 +19,11 @@ import load_cus_art_mapping
 main_page = mainPage()
 app = Flask(__name__)
 db = DatabaseConnection("172.22.33.44", "root", "root", "HM")
+
+bi_data_p = pd.read_parquet('module/data/transactions_train.parquet',engine='pyarrow')
+bi_data_p['t_dat'] = pd.to_datetime(bi_data_p['t_dat'])
+bi_data_p['year'] = bi_data_p['t_dat'].dt.year.astype('str')
+bi_data_p['month'] = bi_data_p['t_dat'].dt.month.astype('str')
 
 @app.route('/')
 def main():
@@ -83,18 +91,84 @@ def show_img():
     print("#############",nlist,"#################")
     return render_template('shop.html', list = nlist, o_path = orig_path)
 
-@app.route('/report')
+@app.route('/report',methods=['POST','GET'])
 def report():
-    year = request.args.get('year')
-    print(year)
-    month = request.args.get('month')
-    print(month)
-    article_id = request.args.get('article_id')
-    print(article_id)
-    bi_df_filter = bi_df[bi_df['article_id'].isin([article_id])]
-    return render_template('report.html',
-                            bi_df_col=bi_df.columns,
-                            bi_df = bi_df.head(5))
+	if request.method =='POST':
+		# get request
+		custid_t = request.values.to_dict()
+		
+		# year filter
+		year = custid_t['year']
+		if year =='all':
+			year_f = ['2018','2019','2020']
+			year_filter = bi_data_p['year'].isin(year_f)
+		else:
+			year_f = year
+			year_filter = bi_data_p['year'].isin([year_f])
+		
+		# month filter
+		month = custid_t['month']
+		if month == 'all':
+			month_f = ['1','2','3','4','5','6','7','8','9','10','11','12']
+			month_filter = bi_data_p['month'].isin(month_f)
+		else:
+			month_f = month
+			month_filter = bi_data_p['month'].isin([month_f])
+		
+		print(month_f)
+		print(year_f)
+		print(custid_t)
+		
+		
+		#month_filter = bi_data_p['month'].isin(['8','9'])
+		print(month_filter)
+		filter_bi = bi_data_p[year_filter & month_filter]
+		print(filter_bi.info())
+		
+		# group by sum price 
+		groupby_df = filter_bi[['year','month','price']].groupby(['year','month'])['price'].sum().to_frame('產品總營收').reset_index()
+		groupby_df.columns = ['年份','月份','產品總營收']
+		groupby_df['產品總營收'] = groupby_df['產品總營收'].astype('int')
+		groupby_df['年份'] = groupby_df['年份'].astype('int')
+		groupby_df['月份'] = groupby_df['月份'].astype('int')
+		groupby_df.sort_values(['年份','月份'], ascending=[True,True],inplace=True)
+		print(groupby_df.head())
+		print(groupby_df.info())
+		
+		# plotly line plot 
+		fig = px.line(groupby_df, 
+					  x = "月份", 
+					  y = "產品總營收",
+					  color = "年份",
+					  markers = True)
+					  
+		figjson = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+		return render_template('report.html',
+						bi_df_col = groupby_df.columns,
+						bi_df_filter = groupby_df,
+						fig=figjson)
+	
+	# read default page dataframe
+	groupby_df = pd.read_parquet('module/data/default_show.parquet',engine='pyarrow')
+	groupby_df['年份'] = groupby_df['年份'].astype('object')
+	groupby_df['月份'] = groupby_df['月份'].astype('object')
+	
+	print(groupby_df.info())
+	
+	# plotly line plot 
+	fig = px.line(groupby_df, 
+				  x = "月份", 
+				  y = "產品總營收",
+				  color = "年份",
+				  markers = True)
+				  
+	figjson = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	
+	return render_template('report.html',
+							bi_df_col=groupby_df.columns,
+							bi_df_filter = groupby_df.head(5),
+							fig = figjson)    
     
 if __name__ == '__main__':
      app.run(host='127.0.0.1', port=8000,debug=True)
