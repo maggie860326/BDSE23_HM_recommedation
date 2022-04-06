@@ -42,5 +42,6 @@ class DatabaseConnection:
         except Exception as ex:
             print(ex)
 
-			
-			
+# db = DatabaseConnection("172.22.33.44", "root", "root", "HM")
+
+# db.read_article_name("845127001")

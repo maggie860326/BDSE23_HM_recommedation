@@ -1,0 +1,57 @@
+name: HM
+channels:
+  - defaults
+dependencies:
+  - asttokens=2.0.5=pyhd3eb1b0_0
+  - backcall=0.2.0=pyhd3eb1b0_0
+  - ca-certificates=2022.2.1=haa95532_0
+  - certifi=2021.10.8=py38haa95532_2
+  - colorama=0.4.4=pyhd3eb1b0_0
+  - debugpy=1.5.1=py38hd77b12b_0
+  - decorator=5.1.1=pyhd3eb1b0_0
+  - entrypoints=0.3=py38_0
+  - executing=0.8.3=pyhd3eb1b0_0
+  - ipykernel=6.9.1=py38haa95532_0
+  - ipython=8.1.1=py38haa95532_0
+  - jedi=0.18.1=py38haa95532_1
+  - jupyter_client=7.1.2=pyhd3eb1b0_0
+  - jupyter_core=4.9.2=py38haa95532_0
+  - matplotlib-inline=0.1.2=pyhd3eb1b0_2
+  - nest-asyncio=1.5.1=pyhd3eb1b0_0
+  - openssl=1.1.1n=h2bbff1b_0
+  - parso=0.8.3=pyhd3eb1b0_0
+  - pickleshare=0.7.5=pyhd3eb1b0_1003
+  - prompt-toolkit=3.0.20=pyhd3eb1b0_0
+  - pure_eval=0.2.2=pyhd3eb1b0_0
+  - pygments=2.11.2=pyhd3eb1b0_0
+  - python=3.8.12=h6244533_0
+  - python-dateutil=2.8.2=pyhd3eb1b0_0
+  - pywin32=302=py38h827c3e9_1
+  - pyzmq=22.3.0=py38hd77b12b_2
+  - setuptools=58.0.4=py38haa95532_0
+  - six=1.16.0=pyhd3eb1b0_1
+  - sqlite=3.38.0=h2bbff1b_0
+  - stack_data=0.2.0=pyhd3eb1b0_0
+  - tornado=6.1=py38h2bbff1b_0
+  - traitlets=5.1.1=pyhd3eb1b0_0
+  - vc=14.2=h21ff451_1
+  - vs2015_runtime=14.27.29016=h5e58377_2
+  - wcwidth=0.2.5=pyhd3eb1b0_0
+  - wheel=0.37.1=pyhd3eb1b0_0
+  - wincertstore=0.2=py38haa95532_2
+  - pip:
+    - joblib==1.1.0
+    - ml-metrics==0.1.2
+    - numpy==1.22.3
+    - pandas==1.4.1
+    - pip==22.0.4
+    - pyarrow==7.0.0
+    - pytz==2022.1
+    - quadratic==1.1.0
+    - scikit-learn==1.0.2
+    - scikit-surprise==1.1.1
+    - scipy==1.8.0
+    - sklearn==0.0
+    - surprise==0.1
+    - threadpoolctl==3.1.0
+prefix: C:\Users\Student\anaconda3\envs\HM
