@@ -61,6 +61,7 @@
     <!-- End of Topbar -->
 	
 <!--form querys-->
+<div style="width: 100px;float: right;margin-top: 10px;">
 <form method="POST" action="/report">
 	<div class="mb-3">
 		<label for="year" class="form-label">年份</label>
@@ -91,8 +92,10 @@
 	</div>
 	<button type="submit">送出</button>
 <form>
+</div>
 
 <!-- test filter table result -->
+<div style="width: 1800px;">
 	<table class="table table-sm">
 		<thead>
 			{% for i in bi_df_col %}
@@ -109,9 +112,9 @@
 			{% endfor %}
 		</tbody>							
 	</table>
-
+</div>
 <!-- plotly lineplot -->
-<div id='chart' class='chart'”></div>
+<div id='chart' class='chart' style="width: 1900px;"></div>
 	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 		<script type='text/javascript'>
 		  var graphs = {{fig | safe}};

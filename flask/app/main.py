@@ -167,7 +167,7 @@ def report():
 	
 	return render_template('report.html',
 							bi_df_col=groupby_df.columns,
-							bi_df_filter = groupby_df.head(5),
+							bi_df_filter = groupby_df.head(10),
 							fig = figjson)    
     
 if __name__ == '__main__':
