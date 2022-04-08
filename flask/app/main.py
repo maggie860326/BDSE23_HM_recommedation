@@ -67,6 +67,7 @@ def shop():
     print(klist)
     # print("#####################",url_id,"#######################")
     # return render_template('shop.html')
+    
     return redirect(url_for("show_img", list= klist, id = art_id))
 
 @app.route('/show') ### 轉此顯示圖片或可以直接轉網頁用
@@ -89,6 +90,7 @@ def show_img():
     #     dic= {"name":getdb[0][0],"img":img,"id":i[1:-1]} # 將 圖片、名稱、ID 加入 DICT
     #     nlist.append(dic) # 製作成LIST
     print("#############",nlist,"#################")
+    
     return render_template('shop.html', list = nlist, o_path = orig_path)
 
 @app.route('/report',methods=['POST','GET'])
@@ -171,4 +173,4 @@ def report():
 							fig = figjson)    
     
 if __name__ == '__main__':
-     app.run(host='127.0.0.1', port=8000,debug=True)
+     app.run(host="0.0.0.0", port=8000,debug=True)

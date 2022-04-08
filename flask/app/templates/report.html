@@ -59,68 +59,70 @@
     </header>
 
     <!-- End of Topbar -->
-	
-<!--form querys-->
-<div style="width: 100px;float: right;margin-top: 10px;">
-<form method="POST" action="/report">
-	<div class="mb-3">
-		<label for="year" class="form-label">年份</label>
-		<select class="form-select" name="year"  id="year" aria-label="Default select example">
-			<option value=all>三年</option>
-			<option value=2018>2018年</option>
-			<option value=2019>2019年</option>
-			<option value=2020>2020年</option>
-		</select>
-	</div>	
-	<div class="mb-3">
-		<label for="month" class="form-label">月份</label>
-		<select class="form-select" name="month"  id="month" aria-label="Default select example">
-			<option value=all>全部月份</option>
-			<option value=1>1月</option>
-			<option value=2>2月</option>
-			<option value=3>3月</option>
-			<option value=4>4月</option>
-			<option value=5>5月</option>
-			<option value=6>6月</option>
-			<option value=7>7月</option>
-			<option value=8>8月</option>
-			<option value=9>9月</option>
-			<option value=10>10月</option>
-			<option value=11>11月</option>
-			<option value=12>12月</option>
-		</select>
-	</div>
-	<button type="submit">送出</button>
-<form>
-</div>
 
-<!-- test filter table result -->
-<div style="width: 1800px;">
-	<table class="table table-sm">
-		<thead>
-			{% for i in bi_df_col %}
-					<th scope="col">{{ i }}</th>
-			 {% endfor %} 
-		</thead>
-		<tbody>
-			{% for index,row in bi_df_filter.iterrows() %}
-				<tr>		
-					<th scope="row">{{row['年份']}}</th>
-					<td>{{row['月份']}}</td>
-					<td>{{row['產品總營收']}}</td>
-				</tr>
-			{% endfor %}
-		</tbody>							
-	</table>
-</div>
-<!-- plotly lineplot -->
-<div id='chart' class='chart' style="width: 1900px;"></div>
-	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-		<script type='text/javascript'>
-		  var graphs = {{fig | safe}};
-		  Plotly.plot('chart',graphs,{});
-		</script>
-	
+    <!--form querys-->
+    <div style="width: 100px;float: right;margin-top: 10px;">
+        <form method="POST" action="/report">
+            <div class="mb-3">
+                <label for="year" class="form-label">年份</label>
+                <select class="form-select" name="year" id="year" aria-label="Default select example">
+                    <option value=all>三年</option>
+                    <option value=2018>2018年</option>
+                    <option value=2019>2019年</option>
+                    <option value=2020>2020年</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="month" class="form-label">月份</label>
+                <select class="form-select" name="month" id="month" aria-label="Default select example">
+                    <option value=all>全部月份</option>
+                    <option value=1>1月</option>
+                    <option value=2>2月</option>
+                    <option value=3>3月</option>
+                    <option value=4>4月</option>
+                    <option value=5>5月</option>
+                    <option value=6>6月</option>
+                    <option value=7>7月</option>
+                    <option value=8>8月</option>
+                    <option value=9>9月</option>
+                    <option value=10>10月</option>
+                    <option value=11>11月</option>
+                    <option value=12>12月</option>
+                </select>
+            </div>
+            
+                <button type="submit">送出</button>
+            
+            <form>
+    </div>
+
+    <!-- test filter table result -->
+    <div style="width: 1800px;min-height: 300px;">
+        <table class="table table-sm">
+            <thead>
+                {% for i in bi_df_col %}
+                <th scope="col">{{ i }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for index,row in bi_df_filter.iterrows() %}
+                <tr>
+                    <th scope="row">{{row['年份']}}</th>
+                    <td>{{row['月份']}}</td>
+                    <td>{{row['產品總營收']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- plotly lineplot -->
+    <div id='chart' class='chart' style="width: 1900px;"></div>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+        var graphs = {{ fig | safe}};
+        Plotly.plot('chart', graphs, {});
+    </script>
+
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -171,7 +173,7 @@
         crossorigin="anonymous"></script>
 
 
-	
+
 </body>
 
 </html>
