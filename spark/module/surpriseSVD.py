@@ -7,7 +7,7 @@ from surprise import accuracy
 from surprise.model_selection import train_test_split
 from collections import defaultdict
 import numpy as np
-import average_precision as metrics
+import module.average_precision as metrics
 
 class surpriseSVD():
     def __init__(self):
