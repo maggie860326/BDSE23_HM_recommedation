@@ -62,5 +62,7 @@ flask/app/static/imgs
 *.zip
 data
 .vscode
-__pycache__
-.ipynb_checkpoints
+*pycache*
+*.ipynb_checkpoints*
+rec_model_flask
+DB_connection.ipynb
