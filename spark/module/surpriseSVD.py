@@ -49,7 +49,9 @@ class surpriseSVD():
         return rating_set
 
 
-    def train_SVD(self, train_data, test_data, paras={}):
+    def train_SVD(self, train, test, paras={}):
+        train_data = train
+        test_data = test
         
         ## 讀取評分資料為surprise可以訓練的格式
         trainset = self.get_rating_set(train_data)
@@ -59,12 +61,12 @@ class surpriseSVD():
         testset2 = [testset.df.loc[i].to_list() for i in range(len(testset.df))]
 
         ## map@k testing 需要產的資料
-        test_data.loc[:,'rating']=0
+        test_data['rating'] = 0
         test_processed = self.get_set(test_data)
         NA, test2 = train_test_split(test_processed, test_size=1.0)
 
         # ======= 消費者的實際購買清單 =======
-        test_data['article_id'] = test_data['article_id'].astype('str')
+        test_data.loc[:,'article_id'] = test_data.loc[:,'article_id'].astype('str')
         test_uni = test_data.drop_duplicates(subset=['customer_id', 'article_id'], keep='first')
         buy_n = test_uni[['customer_id','article_id']].groupby('customer_id')['article_id'].apply(list).to_dict()
 

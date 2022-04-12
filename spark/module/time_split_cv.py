@@ -77,7 +77,7 @@ def time_split_hyperparameter_search(data):
     rmse, map12 = model.train_SVD(train_data, test_data, paras)
     
     paras.update({
-        'stride': data.stride.values[0],
+        'train_period': data.train_period.values[0],
         'start_test' : data.start_test.values[0],
         'rmse' : rmse,
         'map12' : map12
