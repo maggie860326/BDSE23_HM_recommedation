@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    image: mysql:8
+    container_name:
+      mysql8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: HM
+    ports:
+      - 3306:3306
+    volumes:
+      - ./hm/sqls:/docker-entrypoint-initdb.d
+  myweb:
+    image: myflask
+    container_name:
+      myflask
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./hm/myweb:/app/static/

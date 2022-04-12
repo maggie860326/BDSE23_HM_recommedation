@@ -10,7 +10,7 @@
 
     <title>Report</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../static/assets/hm.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -36,7 +36,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">HM</a>
+            <a class="navbar-brand" href="/">HM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -60,360 +60,74 @@
 
     <!-- End of Topbar -->
 
-    <!-- Begin Page Content -->
-    <form>
-        <div class="container-fluid">
-
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-
-                <!-- Earnings (Monthly) Card Example -->
-
-
-
-
-                <!-- Earnings (Monthly) Card Example -->
-
-                <div class="container ">
-
-                    <div class="row">
-                        <div class="col">
-                            <!-- Large button groups (default and split) -->
-                            <div class="btn-group" style="margin: 10px 10px;">
-                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    year
-                                </button>
-                                <ul class="dropdown-menu" name ="year">
-                                    <li><a class="dropdown-item" href="/report?year=2018">2018</a></li>
-                                    <li><a class="dropdown-item" href="/report?year=2019">2019</a></li>
-                                    <li><a class="dropdown-item" href="/report?year=2020">2020</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-
-
-                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    month
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/report?month=1">jan</a></li>
-                                    <li><a class="dropdown-item" href="/report?month=2">feb</a></li>
-                                    <li><a class="dropdown-item" href="/report?month=3">march</a></li>
-                                </ul>
-
-
-
-
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="col">
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
-                        <div class="col">
-
-                        </div>
-                    </div>
-	<!--test filter table -->
-	<table class="table table-sm">
-		<thead>
-			{% for i in bi_df_col %}
-					<th scope="col">{{ i }}</th>
-			 {% endfor %} 
-		</thead>
-		<tbody>
-			{% for index,row in bi_df.iterrows() %}
-				<tr>		
-					<th scope="row">{{row['t_dat']}}</th>
-					<td>{{row['customer_id']}}</td>
-					<td>{{row['article_id']}}</td>
-					<td>{{row['price']}}</td>
-					<td>{{row['sales_channel_id']}}</td>
-					<td>{{row['t_year']}}</td>
-					<td>{{row['t_month']}}</td>
-					<td>{{row['t_day']}}</td>
-					<td>{{row['order_id']}}</td>
-				</tr>
-			{% endfor %}
-		</tbody>							
-	</table>
-	
-	
-                    <!--table-->
-                    <div class="table-div">
-                        <div class="table-left" style="width: 90%;float: left;">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Year</th>
-                                        <th scope="col">Month</th>
-                                        <th scope="col">Article_id</th>
-                                        <th scope="col">Customer_id</th>
-                                        <th scope="col">Order_id</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">7</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">8</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">9</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">10</th>
-                                        <td>2022年</td>
-                                        <td>10月</td>
-                                        <td>3696</td>
-                                        <td>5736</td>
-                                        <td>5886</td>
-                                    </tr>
-
-
-
-
-
-
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                        <div class="table-rigth" style="float: right;">
-                            <div class="dropdown" style="margin: 10px 10px;">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Article_id
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item active" href="/report?article_id=663713001">663713001</a></li>
-                                    <li><a class="dropdown-item" href="#">3699</a></li>
-                                    <li><a class="dropdown-item" href="#">3700</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown" style="margin: 10px 10px;">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Customer_id
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown" style="margin: 10px 10px;">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Order_id
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <input type="submit" value="送出"
-                            style="margin-top: 190px;margin-left: 50px; background-color: gray;color: white;">
-
-                    </div>
-
-
-
-
-
-                </div>
-
-
-
-
-
-
-                <!-- Content Row -->
-
-                <div class="row">
-
-                    <!-- Area Chart -->
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                        aria-labelledby="dropdownMenuLink">
-                                        <div class="dropdown-header">Dropdown Header:</div>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="myAreaChart"></canvas>
-                                    <canvas id="myAreaChart2"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pie Chart -->
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                        aria-labelledby="dropdownMenuLink">
-                                        <div class="dropdown-header">Dropdown Header:</div>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-pie pt-4 pb-2">
-                                    <canvas id="myPieChart"></canvas>
-                                </div>
-                                <div class="mt-4 text-center small">
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Direct
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> Social
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-info"></i> Referral
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- /.container-fluid -->
-
+    <!--form querys-->
+    <div style="width: 100px;float: right;margin-top: 10px;">
+        <form method="POST" action="/report">
+            <div class="mb-3">
+                <label for="year" class="form-label">年份</label>
+                <select class="form-select" name="year" id="year" aria-label="Default select example">
+                    <option value=all>三年</option>
+                    <option value=2018>2018年</option>
+                    <option value=2019>2019年</option>
+                    <option value=2020>2020年</option>
+                </select>
             </div>
-            <!-- End of Main Content -->
-    </form>
+            <div class="mb-3">
+                <label for="month" class="form-label">月份</label>
+                <select class="form-select" name="month" id="month" aria-label="Default select example">
+                    <option value=all>全部月份</option>
+                    <option value=1>1月</option>
+                    <option value=2>2月</option>
+                    <option value=3>3月</option>
+                    <option value=4>4月</option>
+                    <option value=5>5月</option>
+                    <option value=6>6月</option>
+                    <option value=7>7月</option>
+                    <option value=8>8月</option>
+                    <option value=9>9月</option>
+                    <option value=10>10月</option>
+                    <option value=11>11月</option>
+                    <option value=12>12月</option>
+                </select>
+            </div>
+            
+                <button type="submit">送出</button>
+            
+            <form>
+    </div>
+
+    <!-- test filter table result -->
+    <div style="width: 1800px;min-height: 300px;">
+        <table class="table table-sm">
+            <thead>
+                {% for i in bi_df_col %}
+                <th scope="col">{{ i }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for index,row in bi_df_filter.iterrows() %}
+                <tr>
+                    <th scope="row">{{row['年份']}}</th>
+                    <td>{{row['月份']}}</td>
+                    <td>{{row['產品總營收']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- plotly lineplot -->
+    <div id='chart' class='chart' style="width: 1900px;"></div>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+        var graphs = {{ fig | safe}};
+        Plotly.plot('chart', graphs, {});
+    </script>
+
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
+                <span>H&M &copy; bdse23 Website 2022</span>
             </div>
         </div>
     </footer>
@@ -457,6 +171,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
         crossorigin="anonymous"></script>
+
+
 
 </body>
 
