@@ -42,6 +42,8 @@ Temporary Items
 
 # Local History for Visual Studio Code
 .history/
+rec_model_flask/rec_sys/static
+flask/app/static/imgs
 
 # Built Visual Studio Code Extensions
 *.vsix
@@ -60,5 +62,7 @@ Temporary Items
 *.zip
 data
 .vscode
-__pycache__
-.ipynb_checkpoints
+*pycache*
+*.ipynb_checkpoints*
+rec_model_flask
+DB_connection.ipynb
