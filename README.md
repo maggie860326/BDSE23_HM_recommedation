@@ -7,6 +7,7 @@
 - 資料來源：[Kaggle - H&M Personalized Fashion Recommendations](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations)
 
 - 叢集架構：本專題中使用的 Hadoop 叢集使用 7 台實體主機（共 16 台虛擬機），共 24 顆 CPU 和 84G 的 memory。
+- 詳細介紹可以參考簡報：BDSE23 專題發表 第四組.pdf 
 
 ## 模型介紹 (model)
 - SVD (surprise_svd.ipynb)
